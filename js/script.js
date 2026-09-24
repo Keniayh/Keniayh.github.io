@@ -183,7 +183,7 @@ const i18n = {
     "nav.projects": "Projects",
     "nav.quiz": "Challenge",
     "nav.contact": "Contact",
-    "nav.cv": "Resume ↓",
+    "nav.cv": "CV↓",
     "hero.kicker": "Hi, I'm ✦",
     "hero.role": "Software developer · GeneXus developer · junior programmer",
     "hero.bio":
