@@ -63,8 +63,10 @@ navSections.forEach((s) => s && navIo.observe(s));
 const i18n = {
   es: {
     "nav.about": "Sobre mí",
+    "nav.profile": "Perfil",
     "nav.stack": "Tecnologías",
     "nav.exp": "Experiencia",
+    "nav.services": "Aportes",
     "nav.projects": "Proyectos",
     "nav.quiz": "Reto",
     "nav.contact": "Contacto",
@@ -90,6 +92,35 @@ const i18n = {
     "stack.title": "Tecnologías y herramientas",
     "stack.sub":
       "Lenguajes, frameworks y herramientas que utilizo y estoy aprendiendo.",
+    "stack.soft.title": "Habilidades blandas",
+    "stack.soft.team": "Trabajo en equipo",
+    "stack.soft.communication": "Comunicación",
+    "stack.soft.problem": "Resolución de problemas",
+    "stack.soft.adaptability": "Adaptabilidad",
+    "profile.eyebrow": "Perfil profesional",
+    "profile.title": "Misión y visión",
+    "profile.mission.title": "Misión",
+    "profile.mission.text":
+      "Desarrollar soluciones tecnológicas que aporten a la optimización de procesos, combinando una comprensión clara de los requerimientos con una implementación organizada y orientada a resultados.",
+    "profile.vision.title": "Visión",
+    "profile.vision.text":
+      "Seguir fortaleciendo mis conocimientos en desarrollo de software y participar en proyectos donde pueda asumir nuevos retos técnicos, ampliar mi experiencia y aportar a la construcción de soluciones empresariales.",
+    "services.eyebrow": "Aportes",
+    "services.title": "Áreas en las que puedo aportar",
+    "services.sub":
+      "Áreas relacionadas con mi experiencia y formación en desarrollo de software.",
+    "services.web.title": "Desarrollo web",
+    "services.web.text":
+      "Creación y mantenimiento de interfaces web utilizando HTML, CSS y JavaScript, con atención a la estructura, responsividad y experiencia de uso.",
+    "services.integration.title": "Integración de servicios",
+    "services.integration.text":
+      "Integración y consumo de APIs y Web Services como parte del desarrollo y mantenimiento de soluciones empresariales.",
+    "services.support.title": "Soporte y mantenimiento",
+    "services.support.text":
+      "Resolución de incidencias, soporte técnico y mejoras sobre funcionalidades existentes.",
+    "services.database.title": "Bases de datos",
+    "services.database.text":
+      "Trabajo con bases de datos como parte del desarrollo de aplicaciones y de la gestión de información.",
     "exp.eyebrow": "Experiencia",
     "exp.title": "Lo que he construido hasta ahora",
     "exp.e1.when": "Actualidad",
@@ -120,6 +151,18 @@ const i18n = {
     "projects.eyebrow": "Proyectos",
     "projects.title": "Algunos proyectos",
     "projects.view": "Ver repositorio ↗",
+    "projects.spacex.name": "Aplicación SpaceX",
+    "projects.spacex.desc":
+      "Réplica de la página de SpaceX con consumo de una API y cuatro módulos para consultar información sobre cohetes, misiones, historia de la empresa y cápsulas espaciales.",
+    "projects.kario.name": "Plataforma Kario Media",
+    "projects.kario.desc":
+      "Desarrollo del FrontEnd de una plataforma web de consulta utilizando HTML y CSS, con una interfaz responsiva para diferentes dispositivos.",
+    "projects.environment.name": "Min Ambiente BD",
+    "projects.environment.desc":
+      "Diseño y desarrollo de una base de datos para gestionar información relacionada con parques naturales administrados por cada departamento.",
+    "projects.prestservice.name": "PrestService",
+    "projects.prestservice.desc":
+      "Proyecto en Java con Spring Boot y Spring Security, incluyendo JWT para gestionar los servicios ofrecidos por la empresa y la seguridad de los usuarios.",
     "quiz.eyebrow": "Mini-reto",
     "quiz.title": "¿Qué imprime este código?",
     "quiz.sub":
@@ -129,12 +172,14 @@ const i18n = {
     "contact.sub":
       "Abierta a nuevas oportunidades, colaboraciones o simplemente a charlar sobre tecnología.",
     "contact.cta": "Enviarme un mensaje",
-    "footer.text": "© 2026 Kenia Yulieth Díaz · Bucaramanga, Colombia",
+    "footer.text": "© 2026 Kenia Hernández · Bucaramanga, Colombia",
   },
   en: {
     "nav.about": "About",
+    "nav.profile": "Profile",
     "nav.stack": "Stack",
     "nav.exp": "Experience",
+    "nav.services": "What I offer",
     "nav.projects": "Projects",
     "nav.quiz": "Challenge",
     "nav.contact": "Contact",
@@ -158,6 +203,35 @@ const i18n = {
     "stack.eyebrow": "Technologies",
     "stack.title": "Technologies & tools",
     "stack.sub": "Languages, frameworks and tools I use and I'm learning.",
+    "stack.soft.title": "Soft skills",
+    "stack.soft.team": "Teamwork",
+    "stack.soft.communication": "Communication",
+    "stack.soft.problem": "Problem solving",
+    "stack.soft.adaptability": "Adaptability",
+    "profile.eyebrow": "Professional profile",
+    "profile.title": "Mission & vision",
+    "profile.mission.title": "Mission",
+    "profile.mission.text":
+      "Develop technology solutions that help optimize processes, combining a clear understanding of requirements with organized, results-oriented implementation.",
+    "profile.vision.title": "Vision",
+    "profile.vision.text":
+      "Keep strengthening my software development knowledge and take part in projects where I can take on new technical challenges, grow my experience, and contribute to building enterprise solutions.",
+    "services.eyebrow": "What I offer",
+    "services.title": "Areas where I can contribute",
+    "services.sub":
+      "Areas related to my experience and background in software development.",
+    "services.web.title": "Web development",
+    "services.web.text":
+      "Building and maintaining web interfaces with HTML, CSS and JavaScript, with attention to structure, responsiveness and user experience.",
+    "services.integration.title": "Service integration",
+    "services.integration.text":
+      "Integrating and consuming APIs and Web Services as part of developing and maintaining enterprise solutions.",
+    "services.support.title": "Support & maintenance",
+    "services.support.text":
+      "Incident resolution, technical support and improvements to existing features.",
+    "services.database.title": "Databases",
+    "services.database.text":
+      "Working with databases as part of application development and information management.",
     "exp.eyebrow": "Experience",
     "exp.title": "What I've built so far",
     "exp.e1.when": "Present",
@@ -188,6 +262,18 @@ const i18n = {
     "projects.eyebrow": "Projects",
     "projects.title": "Some projects",
     "projects.view": "View repository ↗",
+    "projects.spacex.name": "SpaceX App",
+    "projects.spacex.desc":
+      "Replica of the SpaceX website consuming an API, with four modules to look up information about rockets, missions, company history and space capsules.",
+    "projects.kario.name": "Kario Media Platform",
+    "projects.kario.desc":
+      "Front-end development for a web platform using HTML and CSS, with a responsive interface across devices.",
+    "projects.environment.name": "Environment Ministry DB",
+    "projects.environment.desc":
+      "Design and development of a database to manage information about natural parks administered by each department.",
+    "projects.prestservice.name": "PrestService",
+    "projects.prestservice.desc":
+      "Java project with Spring Boot and Spring Security, including JWT, to manage the company's services and user security.",
     "quiz.eyebrow": "Mini challenge",
     "quiz.title": "What does this code print?",
     "quiz.sub":
@@ -197,7 +283,7 @@ const i18n = {
     "contact.sub":
       "Open to new opportunities, collaborations, or just chatting about tech.",
     "contact.cta": "Send me a message",
-    "footer.text": "© 2026 Kenia Yulieth Díaz · Bucaramanga, Colombia",
+    "footer.text": "© 2026 Kenia Hernández · Bucaramanga, Colombia",
   },
 };
 

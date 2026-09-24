@@ -1,6 +1,6 @@
 # ✦ Kenia Hernández — Portafolio
 
-Portafolio personal de **Kenia Yulieth Hernández Díaz**, desarrolladora de software junior con experiencia y formación en desarrollo web, bases de datos, programación y GeneXus.
+Portafolio personal de **Kenia Hernández**, desarrolladora de software junior con experiencia y formación en desarrollo web, bases de datos, programación y GeneXus.
 
 🌐 **Portafolio:** https://Keniayh.github.io
 
@@ -84,7 +84,7 @@ El repositorio está preparado para funcionar como sitio personal mediante **Git
 
 ## 👩🏻‍💻 Autora
 
-**Kenia Yulieth Hernández Díaz**
+**Kenia Hernández**
 
 - GitHub: https://github.com/Keniayh
 - Portafolio: https://Keniayh.github.io
