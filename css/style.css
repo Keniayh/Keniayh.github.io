@@ -12,14 +12,16 @@
     --sans: 'Sora', system-ui, sans-serif;
     --grad: linear-gradient(90deg, var(--accent1), var(--accent2));
 
-    /* Depth for dark mode: black separation + subtle purple atmosphere */
-    --shadow-soft: 0 12px 30px rgba(0, 0, 0, .48), 0 4px 12px rgba(0, 0, 0, .30), 0 1px 0 rgba(255, 255, 255, .055), 0 0 18px rgba(199, 125, 255, .035);
-    --shadow-card: 0 20px 44px rgba(0, 0, 0, .55), 0 7px 18px rgba(0, 0, 0, .34), 0 1px 0 rgba(255, 255, 255, .065), 0 0 0 1px rgba(199, 125, 255, .07), 0 0 26px rgba(199, 125, 255, .055);
-    --shadow-card-hover: 0 30px 66px rgba(0, 0, 0, .64), 0 12px 28px rgba(0, 0, 0, .40), 0 12px 36px rgba(199, 125, 255, .22), 0 0 34px rgba(255, 143, 227, .10), 0 1px 0 rgba(255, 255, 255, .09);
-    --shadow-glow: 0 28px 64px rgba(0, 0, 0, .56), 0 12px 38px rgba(199, 125, 255, .22), 0 0 52px rgba(199, 125, 255, .13), 0 1px 0 rgba(255, 255, 255, .07);
-    --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, .055), inset 0 0 0 1px rgba(199, 125, 255, .035);
-    --shadow-button: 0 10px 24px rgba(0, 0, 0, .40), 0 0 20px rgba(199, 125, 255, .08);
-    --shadow-button-hover: 0 15px 34px rgba(0, 0, 0, .50), 0 0 30px rgba(199, 125, 255, .18);
+    /* Same shadow geometry (offset/blur/spread) as light mode below — only
+       the colors change. Dark needs a stronger colored ring + glow because
+       black alone is invisible against a near-black background. */
+    --shadow-soft: 0 10px 26px rgba(0, 0, 0, .55), 0 2px 8px rgba(0, 0, 0, .35), 0 0 0 1px rgba(199, 125, 255, .22), 0 0 20px rgba(199, 125, 255, .18), inset 0 1px 0 rgba(255, 255, 255, .10);
+    --shadow-card: 0 18px 42px rgba(0, 0, 0, .60), 0 6px 16px rgba(0, 0, 0, .40), 0 0 0 1px rgba(199, 125, 255, .32), 0 0 34px rgba(199, 125, 255, .28), inset 0 1px 0 rgba(255, 255, 255, .11);
+    --shadow-card-hover: 0 28px 60px rgba(0, 0, 0, .68), 0 10px 26px rgba(0, 0, 0, .45), 0 0 0 1px rgba(199, 125, 255, .50), 0 0 56px rgba(199, 125, 255, .42), 0 0 32px rgba(255, 143, 227, .26), inset 0 1px 0 rgba(255, 255, 255, .13);
+    --shadow-glow: 0 26px 60px rgba(0, 0, 0, .60), 0 0 0 1px rgba(199, 125, 255, .38), 0 0 72px rgba(199, 125, 255, .46), 0 0 44px rgba(255, 143, 227, .24), inset 0 1px 0 rgba(255, 255, 255, .12);
+    --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, .11), inset 0 0 0 1px rgba(199, 125, 255, .14);
+    --shadow-button: 0 8px 20px rgba(0, 0, 0, .50), 0 0 0 1px rgba(199, 125, 255, .26), 0 0 18px rgba(199, 125, 255, .24);
+    --shadow-button-hover: 0 14px 32px rgba(0, 0, 0, .55), 0 0 0 1px rgba(199, 125, 255, .42), 0 0 28px rgba(199, 125, 255, .38), 0 0 18px rgba(255, 143, 227, .22);
 }
 
 [data-theme="light"] {
@@ -33,13 +35,15 @@
     --accent2: #e79bc7;
     --key: #0e8f6e;
 
-    --shadow-soft: 0 8px 24px rgba(55, 35, 75, .10);
-    --shadow-card: 0 12px 30px rgba(55, 35, 75, .12);
-    --shadow-card-hover: 0 18px 38px rgba(55, 35, 75, .16);
-    --shadow-glow: 0 18px 42px rgba(155, 127, 224, .16);
-    --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, .55);
-    --shadow-button: 0 6px 18px rgba(55, 35, 75, .10);
-    --shadow-button-hover: 0 10px 24px rgba(55, 35, 75, .15);
+    /* Same geometry as :root above — only the color changes (soft purple
+       tint on white instead of black-on-dark). */
+    --shadow-soft: 0 10px 26px rgba(60, 40, 90, .12), 0 2px 8px rgba(60, 40, 90, .07), 0 0 0 1px rgba(155, 127, 224, .14), 0 0 20px rgba(155, 127, 224, .08), inset 0 1px 0 rgba(255, 255, 255, .70);
+    --shadow-card: 0 18px 42px rgba(60, 40, 90, .14), 0 6px 16px rgba(60, 40, 90, .08), 0 0 0 1px rgba(155, 127, 224, .18), 0 0 34px rgba(155, 127, 224, .12), inset 0 1px 0 rgba(255, 255, 255, .75);
+    --shadow-card-hover: 0 28px 60px rgba(60, 40, 90, .18), 0 10px 26px rgba(60, 40, 90, .10), 0 0 0 1px rgba(155, 127, 224, .30), 0 0 56px rgba(155, 127, 224, .20), 0 0 32px rgba(231, 155, 199, .16), inset 0 1px 0 rgba(255, 255, 255, .80);
+    --shadow-glow: 0 26px 60px rgba(60, 40, 90, .16), 0 0 0 1px rgba(155, 127, 224, .22), 0 0 72px rgba(155, 127, 224, .22), 0 0 44px rgba(231, 155, 199, .14), inset 0 1px 0 rgba(255, 255, 255, .75);
+    --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, .75), inset 0 0 0 1px rgba(155, 127, 224, .10);
+    --shadow-button: 0 8px 20px rgba(60, 40, 90, .10), 0 0 0 1px rgba(155, 127, 224, .16), 0 0 18px rgba(155, 127, 224, .10);
+    --shadow-button-hover: 0 14px 32px rgba(60, 40, 90, .14), 0 0 0 1px rgba(155, 127, 224, .26), 0 0 28px rgba(155, 127, 224, .18), 0 0 18px rgba(231, 155, 199, .12);
 }
 
 * {
@@ -843,9 +847,8 @@ h2 {
     font-size: 13.5px;
     margin-bottom: 20px;
     white-space: pre;
-    box-shadow: inset 0 2px 12px rgba(0, 0, 0, .30), 0 4px 14px rgba(0, 0, 0, .18);
+    box-shadow: inset 0 2px 12px rgba(0, 0, 0, .30), 0 0 0 1px color-mix(in srgb, var(--accent1) 10%, transparent);
     overflow-x: auto;
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, .20), 0 1px 0 rgba(255, 255, 255, .025);
 }
 
 .quiz-options {
@@ -864,14 +867,14 @@ h2 {
     border-radius: 8px;
     padding: 12px 14px;
     cursor: pointer;
-    box-shadow: 0 5px 14px rgba(0, 0, 0, .16), inset 0 1px 0 rgba(255, 255, 255, .02);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, .16), 0 0 0 1px color-mix(in srgb, var(--accent1) 8%, transparent);
     transition: border-color .15s ease, transform .15s ease, background .15s ease, box-shadow .2s ease;
 }
 
 .quiz-opt:hover {
     border-color: var(--accent1);
     transform: translateY(-2px);
-    box-shadow: 0 9px 20px rgba(0, 0, 0, .25), 0 0 16px rgba(199, 125, 255, .07);
+    box-shadow: 0 9px 20px rgba(0, 0, 0, .25), 0 0 16px color-mix(in srgb, var(--accent1) 24%, transparent);
 }
 
 .quiz-opt.correct {
