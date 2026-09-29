@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV — Kenia Hernández</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-950:#2a1240;
+    --purple-800:#5b1f72;
+    --purple-600:#7c3aa3;
+    --pink-500:#c94a80;
+    --grad: linear-gradient(90deg, var(--purple-800), var(--pink-500));
+    --lavender-100:#f2e8f1;
+    --lavender-050:#faf6fa;
+    --ink:#221a2c;
+    --ink-soft:#5c5266;
+    --paper:#ffffff;
+    --rule:#e3d9e2;
+    font-family: 'Libre Franklin', system-ui, sans-serif, Arial, Helvetica, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#e8e2e7;color:var(--ink);}
+
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+
+  .toolbar{
+    position:sticky; top:0; z-index:10;
+    display:flex; justify-content:center; gap:.75rem;
+    padding:.75rem; background:var(--purple-950); color:#fff;
+  }
+  .toolbar button{
+    font-family:inherit; font-weight:600; font-size:.85rem;
+    border:1px solid rgba(255,255,255,.35); background:transparent; color:#fff;
+    padding:.5rem 1rem; border-radius:999px; cursor:pointer;
+  }
+  .toolbar button:hover{background:rgba(255,255,255,.12);}
+
+  .page{
+    width:8.5in; min-height:11in;
+    margin:1.5rem auto; background:var(--paper);
+    box-shadow:0 6px 24px rgba(42,18,64,.16);
+    page-break-after:always;
+  }
+  .page:last-child{page-break-after:auto;}
+  .topbar{height:7px; background:var(--grad);}
+  .inner{padding:0.62in 0.8in 0.75in;}
+
+  /* header */
+  .head{display:flex; gap:1.05rem; align-items:flex-start;}
+  .photo-box{
+    width:1.3in; height:1.3in; flex:none;
+    border:1.5px solid var(--purple-600);
+    border-radius:4px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--purple-600); background:var(--lavender-050);
+  }
+  .photo-box svg{width:44%; height:44%;}
+  .name-block{padding-top:.06in;}
+  .name-block .full{
+    font-weight:800; font-size:2rem; line-height:1.05;
+    color:var(--purple-950); letter-spacing:.005em; display:block;
+  }
+  .role{
+    margin-top:.3rem; font-size:.92rem; font-weight:600;
+    color:var(--pink-500); letter-spacing:.02em;
+  }
+  .role-sub{
+    margin-top:.12rem; font-size:.78rem; font-weight:500;
+    color:var(--ink-soft); letter-spacing:.01em;
+  }
+
+  .contact-bar{
+    margin-top:.4in;
+    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    padding:.42rem 0;
+    display:flex; flex-wrap:wrap; gap:.35rem 1.5rem;
+    font-size:.82rem; color:var(--ink-soft);
+  }
+  .contact-bar span{display:flex; align-items:center; gap:.4rem;}
+  .contact-bar svg{width:13px; height:13px; fill:none; stroke:var(--purple-600); stroke-width:1.8; flex:none;}
+
+  section{margin-top:.34in;}
+  .sec-title{
+    display:flex; align-items:baseline; gap:.5rem;
+    font-size:.78rem; font-weight:700; color:var(--purple-800);
+    letter-spacing:.11em; text-transform:uppercase;
+  }
+  .sec-title::after{content:""; flex:1; height:1px; background:var(--rule); margin-left:.6rem; position:relative; top:-2px;}
+
+  .sec-body{margin-top:.15in; font-size:.87rem; line-height:1.55; color:var(--ink);}
+
+  .job{margin-bottom:.16in;}
+  .job:last-child{margin-bottom:0;}
+  .job-row{display:flex; justify-content:space-between; align-items:baseline; gap:1rem;}
+  .job-co{font-weight:700; color:var(--ink); font-size:.93rem;}
+  .job-date{font-size:.78rem; color:var(--ink-soft); white-space:nowrap;}
+  .job-role{font-size:.82rem; color:var(--purple-600); font-weight:600; margin-top:.06rem;}
+  .job-body{margin-top:.28rem;}
+
+  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:.26in .4in;}
+  .proj b{color:var(--ink); display:block; margin-bottom:.08rem; font-size:.89rem;}
+  .proj p{margin:0;}
+  .proj .ptags{margin-top:.24rem;}
+
+  .edu-item{margin-bottom:.12in;}
+  .edu-item:last-child{margin-bottom:0;}
+  .edu-item b{color:var(--ink);}
+  .edu-item .inst{font-size:.82rem; color:var(--ink-soft);}
+  .tag-progress{
+    font-size:.68rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+    color:var(--pink-500); border:1px solid var(--pink-500); border-radius:3px;
+    padding:.05rem .35rem; margin-left:.4rem; vertical-align:middle;
+  }
+
+  .chips{display:flex; flex-wrap:wrap; gap:.3rem .45rem;}
+  .chip{
+    font-size:.76rem; padding:.18rem .58rem; border-radius:3px;
+    background:var(--lavender-100); color:var(--purple-800); font-weight:600;
+  }
+  .chip.sm{font-size:.68rem; padding:.1rem .45rem; background:transparent; border:1px solid var(--rule); color:var(--ink-soft); font-weight:500; border-radius:3px;}
+
+  .langs{display:flex; gap:1.6rem; font-size:.88rem;}
+  .langs b{color:var(--ink);}
+
+  @media print{
+    body{background:#fff;}
+    .toolbar{display:none;}
+    .page{box-shadow:none; margin:0; width:auto; min-height:auto;}
+    @page{ size: letter; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button onclick="window.print()">Imprimir / Guardar como PDF</button>
+</div>
+
+<!-- ============ PÁGINA 1 — CON CONTACTO (ES) ============ -->
+<div class="page"><div class="topbar"></div><div class="inner">
+  <div class="head">
+    <div class="photo-box">
+      <img class="about-photo" src="C:\Users\USUARIO\Documents\YO\Keniayh.github.io\assets\images\foto.png" alt="Foto de Kenia">
+    </div>
+    <div class="name-block">
+      <span class="full">Kenia Hernández</span>
+      <div class="role">DESARROLLADORA FULL STACK</div>
+      <div class="role-sub">Desarrollo de soluciones empresariales · ERP farmacéutico</div>
+    </div>
+  </div>
+
+  <div class="contact-bar">
+    <span><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Santander, Colombia</span>
+    <span><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.4 11.4 0 0 0-6.4 0c-2.4-1.6-3.4-1.3-3.4-1.3a4.2 4.2 0 0 0-.1 3.2 4.6 4.6 0 0 0-1.3 3.2c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V19"/></svg>github.com/Keniayh</span>
+    <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4.5a2 2 0 0 1 4 0V17M11 12.5V17"/></svg>linkedin.com/in/keniayh</span>
+    <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>keniayh.github.io</span>
+  </div>
+
+  <section>
+    <div class="sec-title">Perfil profesional</div>
+    <div class="sec-body">Desarrolladora Full Stack con experiencia en GeneXus, SQL Server, Node.js y frameworks como Spring Boot, Laravel y React. Actualmente mantiene y desarrolla soluciones para un ERP farmacéutico en producción. Interés en innovación, resolución de problemas y trabajo en equipo. Comprometida, adaptable y con enfoque en aprendizaje continuo.</div>
+  </section>
+
+  <section>
+    <div class="sec-title">Experiencia laboral</div>
+    <div class="sec-body">
+      <div class="job">
+        <div class="job-row"><span class="job-co">Somic Soluciones</span><span class="job-date">Abril 2025 — Actualidad</span></div>
+        <div class="job-role">Desarrolladora GeneXus — Desarrollo de soluciones empresariales · ERP farmacéutico</div>
+        <div class="job-body">Trabajo en el desarrollo y mantenimiento de soluciones para el área de dispensación de medicamentos, participando en la integración y consumo de APIs y Web Services con diferentes entidades. He trabajado especialmente en procesos de integración con servicios como Compensar, además de realizar mantenimiento, resolución de incidencias, soporte técnico y mejoras sobre funcionalidades existentes.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Proyectos</div>
+    <div class="sec-body proj-grid">
+      <div class="proj"><b>SpaceX App</b><p>Réplica de la página de SpaceX con consumo de una API y cuatro módulos para consultar cohetes, misiones, historia de la empresa y cápsulas espaciales.</p>
+        <div class="ptags"><span class="chip sm">JavaScript</span><span class="chip sm">APIs</span><span class="chip sm">HTML/CSS</span></div>
+      </div>
+      <div class="proj"><b>Min Ambiente BD</b><p>Diseño y desarrollo de una base de datos para gestionar información de parques naturales administrados por cada departamento.</p>
+        <div class="ptags"><span class="chip sm">MySQL</span></div>
+      </div>
+      <div class="proj"><b>Plataforma Kario Media</b><p>Desarrollo del FrontEnd de una plataforma web de consulta, con una interfaz responsiva para diferentes dispositivos.</p>
+        <div class="ptags"><span class="chip sm">HTML</span><span class="chip sm">CSS</span></div>
+      </div>
+      <div class="proj"><b>PrestService</b><p>Proyecto en Java con Spring Boot y Spring Security, incluyendo JWT para gestionar los servicios ofrecidos por la empresa y la seguridad de los usuarios.</p>
+        <div class="ptags"><span class="chip sm">Java</span><span class="chip sm">Spring Boot</span><span class="chip sm">JWT</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Educación</div>
+    <div class="sec-body">
+      <div class="edu-item"><b>Tecnología en Desarrollo de Sistemas Informáticos</b><span class="tag-progress">En curso</span><br><span class="inst">UTS — Unidades Tecnológicas de Santander</span></div>
+      <div class="edu-item"><b>Técnico laboral en programación de software</b> — Completo<br><span class="inst">Campuslands, 2024</span></div>
+      <div class="edu-item"><b>Bachiller técnico en operación turística</b> — Completo<br><span class="inst">Colegio Santa Cruz, 2023</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Habilidades técnicas</div>
+    <div class="sec-body chips">
+      <span class="chip">GeneXus 18</span><span class="chip">SQL Server</span><span class="chip">Node.js</span><span class="chip">Express</span>
+      <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">PHP</span><span class="chip">Laravel</span>
+      <span class="chip">React</span><span class="chip">Python</span><span class="chip">HTML</span><span class="chip">CSS</span>
+      <span class="chip">JavaScript</span><span class="chip">Git</span><span class="chip">MySQL</span><span class="chip">Power BI</span><span class="chip">Tomcat</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Herramientas de trabajo</div>
+    <div class="sec-body chips">
+      <span class="chip">Google Calendar</span><span class="chip">Slack</span><span class="chip">Notion</span><span class="chip">Figma</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Idiomas</div>
+    <div class="sec-body langs">
+      <span><b>Español</b> — Nativo</span>
+      <span><b>Inglés</b> — Básico</span>
+    </div>
+  </section>
+</div></div>
+
+<!-- ============ PÁGINA 2 — SIN CONTACTO (ES) ============ -->
+<div class="page"><div class="topbar"></div><div class="inner">
+  <div class="head">
+    <div class="photo-box">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c1.2-4 4-5.8 7.5-5.8s6.3 1.8 7.5 5.8"/></svg>
+    </div>
+    <div class="name-block">
+      <span class="full">Kenia Hernández</span>
+      <div class="role">DESARROLLADORA FULL STACK</div>
+      <div class="role-sub">Desarrollo de soluciones empresariales · ERP farmacéutico</div>
+    </div>
+  </div>
+
+  <section style="margin-top:.55in;">
+    <div class="sec-title">Perfil profesional</div>
+    <div class="sec-body">Desarrolladora Full Stack con experiencia en GeneXus, SQL Server, Node.js y frameworks como Spring Boot, Laravel y React. Actualmente mantiene y desarrolla soluciones para un ERP farmacéutico en producción. Interés en innovación, resolución de problemas y trabajo en equipo. Comprometida, adaptable y con enfoque en aprendizaje continuo.</div>
+  </section>
+
+  <section>
+    <div class="sec-title">Experiencia laboral</div>
+    <div class="sec-body">
+      <div class="job">
+        <div class="job-row"><span class="job-co">Somic Soluciones</span><span class="job-date">Abril 2025 — Actualidad</span></div>
+        <div class="job-role">Desarrolladora GeneXus — Desarrollo de soluciones empresariales · ERP farmacéutico</div>
+        <div class="job-body">Trabajo en el desarrollo y mantenimiento de soluciones para el área de dispensación de medicamentos, participando en la integración y consumo de APIs y Web Services con diferentes entidades. He trabajado especialmente en procesos de integración con servicios como Compensar, además de realizar mantenimiento, resolución de incidencias, soporte técnico y mejoras sobre funcionalidades existentes.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Proyectos</div>
+    <div class="sec-body proj-grid">
+      <div class="proj"><b>SpaceX App</b><p>Réplica de la página de SpaceX con consumo de una API y cuatro módulos para consultar cohetes, misiones, historia de la empresa y cápsulas espaciales.</p>
+        <div class="ptags"><span class="chip sm">JavaScript</span><span class="chip sm">APIs</span><span class="chip sm">HTML/CSS</span></div>
+      </div>
+      <div class="proj"><b>Min Ambiente BD</b><p>Diseño y desarrollo de una base de datos para gestionar información de parques naturales administrados por cada departamento.</p>
+        <div class="ptags"><span class="chip sm">MySQL</span></div>
+      </div>
+      <div class="proj"><b>Plataforma Kario Media</b><p>Desarrollo del FrontEnd de una plataforma web de consulta, con una interfaz responsiva para diferentes dispositivos.</p>
+        <div class="ptags"><span class="chip sm">HTML</span><span class="chip sm">CSS</span></div>
+      </div>
+      <div class="proj"><b>PrestService</b><p>Proyecto en Java con Spring Boot y Spring Security, incluyendo JWT para gestionar los servicios ofrecidos por la empresa y la seguridad de los usuarios.</p>
+        <div class="ptags"><span class="chip sm">Java</span><span class="chip sm">Spring Boot</span><span class="chip sm">JWT</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Educación</div>
+    <div class="sec-body">
+      <div class="edu-item"><b>Tecnología en Desarrollo de Sistemas Informáticos</b><span class="tag-progress">En curso</span><br><span class="inst">UTS — Unidades Tecnológicas de Santander</span></div>
+      <div class="edu-item"><b>Técnico laboral en programación de software</b> — Completo<br><span class="inst">Campuslands, 2024</span></div>
+      <div class="edu-item"><b>Bachiller técnico en operación turística</b> — Completo<br><span class="inst">Colegio Santa Cruz, 2023</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Habilidades técnicas</div>
+    <div class="sec-body chips">
+      <span class="chip">GeneXus 18</span><span class="chip">SQL Server</span><span class="chip">Node.js</span><span class="chip">Express</span>
+      <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">PHP</span><span class="chip">Laravel</span>
+      <span class="chip">React</span><span class="chip">Python</span><span class="chip">HTML</span><span class="chip">CSS</span>
+      <span class="chip">JavaScript</span><span class="chip">Git</span><span class="chip">MySQL</span><span class="chip">Power BI</span><span class="chip">Tomcat</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Herramientas de trabajo</div>
+    <div class="sec-body chips">
+      <span class="chip">Google Calendar</span><span class="chip">Slack</span><span class="chip">Notion</span><span class="chip">Figma</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Idiomas</div>
+    <div class="sec-body langs">
+      <span><b>Español</b> — Nativo</span>
+      <span><b>Inglés</b> — Básico</span>
+    </div>
+  </section>
+</div></div>
+
+<!-- ============ PÁGINA 3 — ENGLISH VERSION (with contact) ============ -->
+<div class="page"><div class="topbar"></div><div class="inner">
+  <div class="head">
+    <div class="photo-box">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c1.2-4 4-5.8 7.5-5.8s6.3 1.8 7.5 5.8"/></svg>
+    </div>
+    <div class="name-block">
+      <span class="full">Kenia Hernández</span>
+      <div class="role">FULL STACK DEVELOPER</div>
+      <div class="role-sub">Enterprise Solutions Development · Pharmaceutical ERP</div>
+    </div>
+  </div>
+
+  <div class="contact-bar">
+    <span><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Santander, Colombia</span>
+    <span><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.4 11.4 0 0 0-6.4 0c-2.4-1.6-3.4-1.3-3.4-1.3a4.2 4.2 0 0 0-.1 3.2 4.6 4.6 0 0 0-1.3 3.2c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V19"/></svg>github.com/Keniayh</span>
+    <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4.5a2 2 0 0 1 4 0V17M11 12.5V17"/></svg>linkedin.com/in/keniayh</span>
+    <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>keniayh.github.io</span>
+  </div>
+
+  <section>
+    <div class="sec-title">Professional profile</div>
+    <div class="sec-body">Full Stack developer with experience in GeneXus, SQL Server, Node.js, and frameworks such as Spring Boot, Laravel, and React. Currently maintains and develops solutions for a production pharmaceutical ERP. Interested in innovation, problem-solving, and teamwork. Committed, adaptable, and focused on continuous learning.</div>
+  </section>
+
+  <section>
+    <div class="sec-title">Work experience</div>
+    <div class="sec-body">
+      <div class="job">
+        <div class="job-row"><span class="job-co">Somic Soluciones</span><span class="job-date">April 2025 — Present</span></div>
+        <div class="job-role">GeneXus Developer — Enterprise Solutions Development · Pharmaceutical ERP</div>
+        <div class="job-body">I work on developing and maintaining solutions for the medication dispensing area, participating in the integration and consumption of APIs and Web Services with different entities. I have worked especially on integration processes with services such as Compensar, as well as performing maintenance, incident resolution, technical support, and improvements to existing functionality.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Projects</div>
+    <div class="sec-body proj-grid">
+      <div class="proj"><b>SpaceX App</b><p>Replica of the SpaceX website consuming an API, with four modules to look up rockets, missions, company history, and space capsules.</p>
+        <div class="ptags"><span class="chip sm">JavaScript</span><span class="chip sm">APIs</span><span class="chip sm">HTML/CSS</span></div>
+      </div>
+      <div class="proj"><b>Min Ambiente DB</b><p>Design and development of a database to manage information on natural parks administered by each department.</p>
+        <div class="ptags"><span class="chip sm">MySQL</span></div>
+      </div>
+      <div class="proj"><b>Kario Media Platform</b><p>Built the frontend of a web query platform, with a responsive interface for different devices.</p>
+        <div class="ptags"><span class="chip sm">HTML</span><span class="chip sm">CSS</span></div>
+      </div>
+      <div class="proj"><b>PrestService</b><p>Java project with Spring Boot and Spring Security, including JWT, to manage the company's services and user security.</p>
+        <div class="ptags"><span class="chip sm">Java</span><span class="chip sm">Spring Boot</span><span class="chip sm">JWT</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Education</div>
+    <div class="sec-body">
+      <div class="edu-item"><b>Technology Degree in Computer Systems Development</b><span class="tag-progress">In progress</span><br><span class="inst">UTS — Unidades Tecnológicas de Santander</span></div>
+      <div class="edu-item"><b>Technical Diploma in Software Programming</b> — Completed<br><span class="inst">Campuslands, 2024</span></div>
+      <div class="edu-item"><b>Technical Diploma in Tourism Operations</b> — Completed<br><span class="inst">Colegio Santa Cruz, 2023</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Technical skills</div>
+    <div class="sec-body chips">
+      <span class="chip">GeneXus 18</span><span class="chip">SQL Server</span><span class="chip">Node.js</span><span class="chip">Express</span>
+      <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">PHP</span><span class="chip">Laravel</span>
+      <span class="chip">React</span><span class="chip">Python</span><span class="chip">HTML</span><span class="chip">CSS</span>
+      <span class="chip">JavaScript</span><span class="chip">Git</span><span class="chip">MySQL</span><span class="chip">Power BI</span><span class="chip">Tomcat</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Work tools</div>
+    <div class="sec-body chips">
+      <span class="chip">Google Calendar</span><span class="chip">Slack</span><span class="chip">Notion</span><span class="chip">Figma</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Languages</div>
+    <div class="sec-body langs">
+      <span><b>Spanish</b> — Native</span>
+      <span><b>English</b> — Basic</span>
+    </div>
+  </section>
+</div></div>
+
+</body>
+</html>
