@@ -12,7 +12,7 @@
     es: {
       hint: "Desliza para entrar",
       led: [
-        "HOLA, SOY KENIA ✦ GIRA LA PERILLA PARA VER MIS PROYECTOS",
+        "HOLA, SOY KENIA · GIRA LA PERILLA PARA VER MIS PROYECTOS",
         "APLICACIÓN SPACEX ▸ JAVASCRIPT + API",
         "PLATAFORMA KARIO MEDIA ▸ HTML + CSS",
         "MIN AMBIENTE BD ▸ MODELADO DE DATOS",
@@ -34,7 +34,7 @@
     en: {
       hint: "Scroll to enter",
       led: [
-        "HI, I'M KENIA ✦ TURN THE KNOB TO SEE MY PROJECTS",
+        "HI, I'M KENIA · TURN THE KNOB TO SEE MY PROJECTS",
         "SPACEX APP ▸ JAVASCRIPT + API",
         "KARIO MEDIA PLATFORM ▸ HTML + CSS",
         "MIN AMBIENTE DB ▸ DATA MODELING",
