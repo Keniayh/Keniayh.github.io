@@ -149,6 +149,13 @@
   const canvas = document.getElementById("sc-static");
   const ctx = canvas.getContext("2d");
 
+  // alto del menú: la escena se pega justo debajo de él
+  const nav = document.querySelector("nav");
+  function setNavHeight() {
+    if (nav) root.style.setProperty("--nav-h", `${nav.offsetHeight}px`);
+  }
+  setNavHeight();
+
   const CH_COUNT = 5;
   const ANGLES = [-60, -30, 0, 30, 60];
   let ch = 0;
@@ -332,7 +339,8 @@
     const w = sticky.clientWidth;
     const h = sticky.clientHeight;
     const total = r.height - h;
-    const p = total > 0 ? clamp(-r.top / total, 0, 1) : 0;
+    const stickTop = parseFloat(getComputedStyle(sticky).top) || 0;
+    const p = total > 0 ? clamp((stickTop - r.top) / total, 0, 1) : 0;
     if (p === lastP) return;
     lastP = p;
 
@@ -373,7 +381,7 @@
   };
 
   window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", () => requestAnimationFrame(measure));
+  window.addEventListener("resize", () => requestAnimationFrame(() => { setNavHeight(); measure(); }));
   reduce.addEventListener("change", measure);
 
   // al cambiar ES/EN (script.js cambia el atributo lang del <html>)
