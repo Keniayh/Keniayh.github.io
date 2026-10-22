@@ -1,0 +1,499 @@
+/* =========================================================
+   SECCIONES — diseño y animaciones al hacer scroll
+   (js/scroll-fx.js agrega las clases fx-*; el HTML no cambia)
+   ========================================================= */
+
+/* ---------- barra de progreso de lectura ---------- */
+.fx-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 11;
+    background: var(--grad);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--accent2) 70%, transparent);
+    pointer-events: none;
+}
+
+/* ---------- cascarón de cada sección ---------- */
+.fx-sec {
+    position: relative;
+    overflow: hidden;
+    overflow: clip;
+    padding: clamp(70px, 9vw, 110px) 0;
+}
+
+.fx-sec > .wrap {
+    position: relative;
+    z-index: 1;
+}
+
+.band-alt.fx-sec {
+    background-image:
+        radial-gradient(color-mix(in srgb, var(--accent1) 16%, transparent) 1px, transparent 1.2px);
+    background-size: 22px 22px;
+}
+
+/* luz suave que acompaña a cada sección */
+.fx-sec::before {
+    content: "";
+    position: absolute;
+    width: 560px;
+    height: 560px;
+    right: -160px;
+    top: 0;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--accent1) 16%, transparent), transparent);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.fx-sec:nth-of-type(even)::before {
+    right: auto;
+    left: -200px;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--accent2) 13%, transparent), transparent);
+}
+
+/* palabra gigante de fondo que se desliza con el scroll */
+.fx-ghost {
+    position: absolute;
+    top: clamp(18px, 3vw, 40px);
+    left: 0;
+    z-index: 0;
+    white-space: nowrap;
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(64px, 10vw, 150px);
+    line-height: 1;
+    letter-spacing: -.04em;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--accent1) 26%, transparent);
+    opacity: .5;
+    pointer-events: none;
+    user-select: none;
+    will-change: transform;
+}
+
+[data-theme="light"] .fx-ghost {
+    -webkit-text-stroke-color: color-mix(in srgb, var(--accent1) 40%, transparent);
+}
+
+/* ---------- encabezados ---------- */
+.fx-sec .eyebrow {
+    gap: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+.fx-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: var(--grad);
+    color: #12081c;
+    font-weight: 700;
+    letter-spacing: .04em;
+    box-shadow: 0 0 18px color-mix(in srgb, var(--accent1) 45%, transparent);
+}
+
+.fx-sec .eyebrow-dot {
+    width: 34px;
+    height: 1.5px;
+    border-radius: 2px;
+}
+
+.fx-mask {
+    overflow: hidden;
+    overflow: clip;
+    padding-bottom: .12em;
+    margin-bottom: 14px;
+}
+
+.fx-sec h2 {
+    font-size: clamp(30px, 4.2vw, 50px);
+    line-height: 1.04;
+    letter-spacing: -.025em;
+    font-weight: 800;
+    margin: 0;
+    max-width: 18ch;
+}
+
+.fx-sec .section-sub {
+    font-size: 16px;
+    max-width: 56ch;
+    margin-bottom: 44px;
+}
+
+/* ---------- revelado al entrar en pantalla ---------- */
+.fx-ready .fx-mask h2 {
+    translate: 0 105%;
+    transition: translate .9s cubic-bezier(.2, .8, .2, 1);
+}
+
+.fx-ready .fx-mask.fx-in h2 { translate: 0 0; }
+
+.fx-ready .fx-item {
+    opacity: 0;
+    translate: 0 28px;
+    transition:
+        opacity .8s cubic-bezier(.2, .8, .2, 1) var(--d, 0s),
+        translate .8s cubic-bezier(.2, .8, .2, 1) var(--d, 0s),
+        scale .8s cubic-bezier(.2, .8, .2, 1) var(--d, 0s);
+}
+
+.fx-ready .fx-item.fx-in {
+    opacity: 1;
+    translate: 0 0;
+}
+
+/* el contenedor ya no necesita su propio fundido */
+.fx-sec > .wrap.reveal {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- tarjetas: brillo que sigue al mouse + inclinación ---------- */
+.fx-spot {
+    position: relative;
+    isolation: isolate;
+}
+
+.fx-spot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent1) 22%, transparent), transparent 65%);
+    transition: opacity .3s ease;
+}
+
+.fx-spot:hover::after { opacity: 1; }
+
+.fx-tilt {
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+    transition: transform .5s cubic-bezier(.2, .8, .2, 1), border-color .2s ease, box-shadow .25s ease;
+}
+
+.fx-tilt:hover {
+    --lift: -4px;
+    transition: transform .12s ease-out, border-color .2s ease, box-shadow .25s ease;
+}
+
+/* ---------- sobre mí ---------- */
+.fx-photo {
+    position: relative;
+    rotate: -2deg;
+    padding: 5px;
+    border-radius: 22px;
+    background: var(--grad);
+    box-shadow: var(--shadow-glow);
+    transition: rotate .4s ease;
+}
+
+.fx-photo:hover { rotate: 0deg; }
+
+@media (max-width: 640px) {
+    .fx-photo {
+        justify-self: start;
+        width: min(100%, 232px);
+    }
+
+    .fx-photo .about-photo { max-width: none; }
+}
+
+.fx-photo .about-photo {
+    display: block;
+    border: none;
+    border-radius: 17px;
+    box-shadow: none;
+}
+
+.fx-photo::after {
+    content: "hola";
+    position: absolute;
+    right: -14px;
+    bottom: 18px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent2);
+    box-shadow: var(--shadow-soft);
+    rotate: 6deg;
+}
+
+html[lang="en"] .fx-photo::after { content: "hi"; }
+
+/* ---------- misión / visión y aportes ---------- */
+.fx-sec .profile-card,
+.fx-sec .service-card-new {
+    padding: 30px 28px;
+    border-radius: 20px;
+}
+
+.fx-sec .profile-card-icon,
+.fx-sec .service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--accent1) 14%, var(--panel));
+    border: 1px solid color-mix(in srgb, var(--accent1) 30%, var(--line));
+    box-shadow: var(--shadow-inner);
+}
+
+.fx-sec .service-grid {
+    counter-reset: svc;
+}
+
+.fx-sec .service-card-new {
+    counter-increment: svc;
+}
+
+.fx-sec .service-card-new::before {
+    content: "0" counter(svc);
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    opacity: .7;
+}
+
+/* ---------- cinta de tecnologías ---------- */
+.fx-ticker {
+    position: relative;
+    z-index: 2;
+    margin: -10px 0;
+    padding: 18px 0;
+    overflow-x: hidden;
+    overflow-x: clip;
+    pointer-events: none;
+    user-select: none;
+}
+
+.fx-ticker-row {
+    overflow: hidden;
+    overflow: clip;
+    white-space: nowrap;
+    padding: 10px 0;
+    width: 110vw;
+    margin-left: -5vw;
+}
+
+.fx-ticker-row:first-child {
+    background: var(--grad);
+    color: #12081c;
+    rotate: -1.2deg;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 16px 40px -12px color-mix(in srgb, var(--accent1) 60%, transparent);
+}
+
+.fx-ticker-track {
+    display: inline-flex;
+    gap: 26px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(15px, 1.7vw, 21px);
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    will-change: transform;
+}
+
+.fx-ticker-track span:nth-child(even) {
+    font-weight: 400;
+    opacity: .6;
+}
+
+/* ---------- línea de tiempo (experiencia y educación) ---------- */
+.fx-tl {
+    --tl-x: 172px;
+}
+
+.fx-tl-line {
+    position: absolute;
+    left: calc(24px + var(--tl-x));
+    top: var(--tl-top, 0);
+    height: var(--tl-h, 0);
+    width: 2px;
+    margin-left: -1px;
+    background: var(--line);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.fx-tl-line span {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, var(--accent1), var(--accent2));
+    box-shadow: 0 0 14px var(--accent1);
+    transform-origin: top;
+    transform: scaleY(var(--tl-p, 0));
+}
+
+.fx-tl .entry {
+    position: relative;
+    border-top: none;
+    padding: 26px 0;
+}
+
+.fx-tl .entry::before {
+    content: "";
+    position: absolute;
+    left: var(--tl-x);
+    top: 32px;
+    width: 14px;
+    height: 14px;
+    margin-left: -7px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--line);
+    transition: border-color .4s ease, box-shadow .4s ease, background .4s ease, scale .4s cubic-bezier(.3, 1.6, .5, 1);
+    z-index: 1;
+}
+
+.fx-tl .entry.fx-on::before {
+    border-color: var(--accent2);
+    background: var(--accent1);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent1) 22%, transparent), 0 0 18px var(--accent2);
+    scale: 1.15;
+}
+
+.fx-tl .entry-body {
+    flex: 1;
+    margin-left: 22px;
+    padding: 22px 24px;
+    border-radius: 18px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-soft);
+    transition: border-color .4s ease, box-shadow .4s ease;
+}
+
+.fx-tl .entry.fx-on .entry-body {
+    border-color: color-mix(in srgb, var(--accent1) 45%, var(--line));
+    box-shadow: var(--shadow-card);
+}
+
+.fx-tl .entry-when {
+    padding-top: 26px;
+    font-size: 13px;
+    letter-spacing: .04em;
+}
+
+@media (max-width: 560px) {
+    .fx-tl { --tl-x: 8px; }
+    .fx-tl .entry { padding-left: 26px; }
+    .fx-tl .entry::before { top: 8px; }
+    .fx-tl .entry-when { padding-top: 0; }
+    .fx-tl .entry-body { margin-left: 0; }
+}
+
+/* ---------- proyectos: miniaturas con los dibujos del monitor ---------- */
+.project-thumb.fx-art {
+    --sc-ph: #ffb8ec;
+    --sc-ph-2: #d6a4ff;
+    --sc-leaf: #7ee0c3;
+    --sc-screen-bg: #13081f;
+    height: 170px;
+    background: radial-gradient(ellipse at 50% 45%, #2a1340, #13081f 75%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 18px;
+}
+
+.project-thumb.fx-art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, .25) 0 1px, transparent 1px 3px),
+        radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0, 0, 0, .5) 100%);
+    pointer-events: none;
+    transform: none;
+}
+
+.project:hover .project-thumb.fx-art::after { transform: none; }
+
+.project-thumb.fx-art svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 6px rgba(255, 184, 236, .5));
+    transition: scale .5s cubic-bezier(.2, .8, .2, 1);
+}
+
+.project:hover .project-thumb.fx-art svg { scale: 1.07; }
+
+.fx-sec .project {
+    border-radius: 20px;
+}
+
+.fx-sec .project-name {
+    font-size: 18px;
+}
+
+.fx-sec .project-body a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+
+.fx-sec .project-body a:hover {
+    text-decoration: none;
+    border-color: var(--accent2);
+    background: color-mix(in srgb, var(--accent1) 14%, transparent);
+}
+
+/* ---------- contacto: título enorme ---------- */
+#contacto.fx-sec h2 {
+    font-size: clamp(48px, 9vw, 128px);
+    max-width: none;
+    background: linear-gradient(90deg, var(--ink) 0%, var(--accent1) 55%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+#contacto.fx-sec .contact-row {
+    align-items: flex-end;
+}
+
+/* ---------- menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .fx-ready .fx-mask h2,
+    .fx-ready .fx-item {
+        translate: none !important;
+        scale: none !important;
+        filter: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    .fx-ghost { transform: none !important; }
+    .fx-tilt { transform: none !important; }
+}

@@ -900,25 +900,25 @@ html.has-cursor * {
     justify-content: center;
 }
 
-.cur-ring-inner {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    transition: transform .25s cubic-bezier(.2, .9, .3, 1.3), background .25s ease, border-color .25s ease;
-}
-
 .cur-label {
-    position: relative;
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--grad);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
     font-family: var(--mono);
     font-size: 10.5px;
     font-weight: 700;
     letter-spacing: .08em;
+    line-height: 1.2;
     text-transform: uppercase;
     color: #12081c;
     white-space: nowrap;
     opacity: 0;
-    transform: scale(.6);
-    transition: opacity .2s ease, transform .2s ease;
+    translate: -6px -50%;
+    transition: opacity .2s ease, translate .2s ease;
 }
 
 .cur-dot {
@@ -932,29 +932,19 @@ html.has-cursor * {
 html.cur-visible .cur-ring,
 html.cur-visible .cur-dot { opacity: 1; }
 
-/* sobre algo clicable el aro crece */
-.cur-ring { transition: opacity .25s ease, width .25s cubic-bezier(.2, .9, .3, 1.2), height .25s cubic-bezier(.2, .9, .3, 1.2), margin .25s cubic-bezier(.2, .9, .3, 1.2), background .25s ease, border-color .25s ease; }
+/* sobre algo clicable el aro crece un poco; el texto va en una etiqueta al lado */
+.cur-ring { transition: opacity .25s ease, width .25s cubic-bezier(.2, .9, .3, 1.2), height .25s cubic-bezier(.2, .9, .3, 1.2), margin .25s cubic-bezier(.2, .9, .3, 1.2), background .25s ease, border-color .25s ease, scale .15s ease; }
 
 html.cur-hover .cur-ring {
-    width: 64px;
-    height: 64px;
-    margin: -32px 0 0 -32px;
-    background: color-mix(in srgb, var(--accent1) 18%, transparent);
+    width: 48px;
+    height: 48px;
+    margin: -24px 0 0 -24px;
+    background: color-mix(in srgb, var(--accent1) 16%, transparent);
     border-color: var(--accent2);
 }
 
-html.cur-has-label .cur-ring {
-    width: 78px;
-    height: 78px;
-    margin: -39px 0 0 -39px;
-    background: var(--grad);
-    border-color: transparent;
-}
-
-html.cur-has-label .cur-label { opacity: 1; transform: none; }
-html.cur-has-label .cur-dot,
-html.cur-hover .cur-dot { opacity: 0; }
-html.cur-down .cur-ring { transform: scale(.85); }
+html.cur-has-label .cur-label { opacity: 1; translate: 0 -50%; }
+html.cur-down .cur-ring { scale: .85; }
 
 /* textura de grano en toda la página */
 .sc-grain {
