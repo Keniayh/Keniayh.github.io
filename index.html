@@ -19,8 +19,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23c77dff'/%3E%3Cstop offset='1' stop-color='%23ff8fe3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='monospace' font-weight='bold' font-size='26' fill='%2312081c' text-anchor='middle'%3EKD%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/hero.css">
 
 </head>
 <body>
@@ -44,52 +45,234 @@
   </div>
 </nav>
 
-<div class="wrap">
-  <div class="hero">
-    <div>
+<!-- ============ INICIO: escena del escritorio (reemplaza el antiguo <div class="wrap"><div class="hero">…</div></div>) ============ -->
+<section class="scene" id="inicio" aria-label="Inicio">
+  <div class="sc-sticky">
+
+    <!-- capa de fondo: pared, neón y repisa -->
+    <div class="sc-layer sc-back" aria-hidden="true">
+      <div class="sc-wall"></div>
+      <div class="sc-neon">&lt;/&gt;</div>
+      <div class="sc-shelf">
+        <span class="sc-book b1">GX</span>
+        <span class="sc-book b2">SQL</span>
+        <span class="sc-book b3">JS</span>
+        <span class="sc-book b4">JAVA</span>
+        <span class="sc-book b6">PHP</span>
+        <svg class="sc-cactus" viewBox="0 0 40 52"><path d="M14 30V12a6 6 0 0 1 12 0v18" fill="var(--sc-leaf)"/><path d="M14 22H9a4 4 0 0 1-4-4v-5a3 3 0 0 1 6 0v3h3" fill="var(--sc-leaf)"/><path d="M26 18h4v-3a3 3 0 0 1 6 0v5a4 4 0 0 1-4 4h-6" fill="var(--sc-leaf)"/><path d="M8 30h24l-3 20H11z" fill="var(--sc-pot)"/></svg>
+        <span class="sc-plank"></span>
+      </div>
+    </div>
+
+    <!-- capa media: escritorio, teclado, planta y el monitor -->
+    <div class="sc-layer sc-mid">
+      <div class="sc-desk" aria-hidden="true"></div>
+      <div class="sc-glow" aria-hidden="true"></div>
+
+      <svg class="sc-keyboard" viewBox="0 0 300 100" aria-hidden="true">
+        <defs>
+          <pattern id="sc-keys" width="18" height="18" patternUnits="userSpaceOnUse" x="8" y="8">
+            <rect x="1.5" y="1.5" width="15" height="14" rx="3" fill="var(--sc-key)"/>
+            <rect x="1.5" y="12.5" width="15" height="3.5" rx="1.5" fill="var(--sc-key-shade)"/>
+          </pattern>
+        </defs>
+        <rect x="0" y="0" width="300" height="100" rx="12" fill="var(--sc-plastic-3)"/>
+        <rect x="4" y="3" width="292" height="92" rx="10" fill="var(--sc-plastic-2)"/>
+        <rect x="8" y="8" width="284" height="72" fill="url(#sc-keys)"/>
+        <rect x="80" y="80" width="140" height="13" rx="4" fill="var(--sc-key)"/>
+      </svg>
+
+      <svg class="sc-plant" viewBox="0 0 80 110" aria-hidden="true">
+        <ellipse cx="40" cy="20" rx="9" ry="22" transform="rotate(-28 40 50)" fill="var(--sc-leaf)"/>
+        <ellipse cx="40" cy="18" rx="9" ry="24" fill="var(--sc-leaf-2)"/>
+        <ellipse cx="40" cy="20" rx="9" ry="22" transform="rotate(30 40 50)" fill="var(--sc-leaf)"/>
+        <path d="M18 58h44l-6 48H24z" fill="var(--sc-pot)"/>
+        <rect x="15" y="54" width="50" height="10" rx="3" fill="var(--sc-pot-rim)"/>
+      </svg>
+
+      <!-- el monitor -->
+      <div class="sc-rig" id="sc-rig">
+        <div class="sc-monitor">
+          <div class="sc-bezel">
+            <div class="sc-screen" id="sc-screen" role="button" tabindex="0" data-cursor="next" aria-label="Pantalla">
+              <div class="sc-screen-inner">
+
+                <div class="sc-ch is-on" data-ch="0">
+                  <pre class="sc-code" id="sc-code"></pre>
+                </div>
+
+                <div class="sc-ch" data-ch="1">
+                  <svg class="sc-art" viewBox="0 0 200 110" aria-hidden="true">
+                    <g class="sc-stars"><circle cx="20" cy="18" r="1"/><circle cx="60" cy="40" r=".8"/><circle cx="150" cy="14" r="1.2"/><circle cx="180" cy="50" r=".8"/><circle cx="110" cy="28" r=".7"/><circle cx="35" cy="80" r=".8"/><circle cx="170" cy="92" r="1"/><circle cx="90" cy="8" r=".9"/></g>
+                    <path d="M40 100 Q100 20 190 30" fill="none" stroke="var(--sc-ph-2)" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
+                    <g class="sc-rocket" transform="translate(96 30) rotate(35)">
+                      <path d="M0-22c6 6 8 16 8 26H-8c0-10 2-20 8-26z" fill="var(--sc-ph)"/>
+                      <circle cx="0" cy="-6" r="3" fill="var(--sc-screen-bg)" stroke="var(--sc-ph-2)" stroke-width="1"/>
+                      <path d="M-8 0l-6 10h6zM8 0l6 10H8z" fill="var(--sc-ph-2)"/>
+                      <path class="sc-flame" d="M-5 6h10l-5 14z" fill="#ffb86b"/>
+                    </g>
+                    <circle cx="170" cy="85" r="16" fill="none" stroke="var(--sc-ph-2)" stroke-width="1" opacity=".7"/>
+                    <ellipse cx="170" cy="85" rx="26" ry="6" fill="none" stroke="var(--sc-ph)" stroke-width=".8" opacity=".6"/>
+                  </svg>
+                  <div class="sc-info"><p class="sc-title"></p><p class="sc-desc"></p><p class="sc-tags"></p></div>
+                </div>
+
+                <div class="sc-ch" data-ch="2">
+                  <svg class="sc-art" viewBox="0 0 200 110" aria-hidden="true">
+                    <g fill="none" stroke="var(--sc-ph-2)" stroke-width="1.2">
+                      <rect x="30" y="12" width="110" height="78" rx="4"/>
+                      <path d="M30 22h110"/>
+                    </g>
+                    <g fill="var(--sc-ph-2)"><circle cx="36" cy="17" r="1.5"/><circle cx="41" cy="17" r="1.5"/><circle cx="46" cy="17" r="1.5"/></g>
+                    <rect x="38" y="28" width="94" height="16" rx="2" fill="var(--sc-ph)" opacity=".85"/>
+                    <g fill="var(--sc-ph-2)" opacity=".55"><rect x="38" y="50" width="28" height="32" rx="2"/><rect x="71" y="50" width="28" height="32" rx="2"/><rect x="104" y="50" width="28" height="32" rx="2"/></g>
+                    <rect x="146" y="30" width="36" height="66" rx="5" fill="var(--sc-screen-bg)" stroke="var(--sc-ph)" stroke-width="1.4"/>
+                    <rect x="151" y="38" width="26" height="9" rx="1.5" fill="var(--sc-ph)" opacity=".85"/>
+                    <g fill="var(--sc-ph-2)" opacity=".55"><rect x="151" y="51" width="26" height="12" rx="1.5"/><rect x="151" y="67" width="26" height="12" rx="1.5"/></g>
+                    <rect x="159" y="87" width="10" height="2" rx="1" fill="var(--sc-ph)"/>
+                  </svg>
+                  <div class="sc-info"><p class="sc-title"></p><p class="sc-desc"></p><p class="sc-tags"></p></div>
+                </div>
+
+                <div class="sc-ch" data-ch="3">
+                  <svg class="sc-art" viewBox="0 0 200 110" aria-hidden="true">
+                    <g fill="none" stroke="var(--sc-ph-2)" stroke-width="1">
+                      <path d="M72 30h28v50h26"/>
+                      <path d="M72 66h18"/>
+                    </g>
+                    <g class="sc-table">
+                      <rect x="20" y="16" width="52" height="40" rx="3"/><rect x="20" y="16" width="52" height="10" rx="3" class="h"/>
+                      <path d="M26 34h40M26 42h30M26 50h36"/>
+                    </g>
+                    <g class="sc-table">
+                      <rect x="20" y="62" width="52" height="34" rx="3"/><rect x="20" y="62" width="52" height="10" rx="3" class="h"/>
+                      <path d="M26 80h34M26 88h26"/>
+                    </g>
+                    <g class="sc-table">
+                      <rect x="126" y="54" width="56" height="44" rx="3"/><rect x="126" y="54" width="56" height="10" rx="3" class="h"/>
+                      <path d="M132 72h40M132 80h30M132 88h38"/>
+                    </g>
+                    <path d="M150 14c14 0 22 8 22 22-14 0-22-8-22-22z" fill="var(--sc-leaf)" opacity=".9"/>
+                    <path d="M152 16l18 18" stroke="var(--sc-screen-bg)" stroke-width="1.2"/>
+                  </svg>
+                  <div class="sc-info"><p class="sc-title"></p><p class="sc-desc"></p><p class="sc-tags"></p></div>
+                </div>
+
+                <div class="sc-ch" data-ch="4">
+                  <svg class="sc-art" viewBox="0 0 200 110" aria-hidden="true">
+                    <path d="M44 14l26 9v22c0 18-12 30-26 36-14-6-26-18-26-36V23z" fill="none" stroke="var(--sc-ph)" stroke-width="1.6"/>
+                    <circle cx="44" cy="44" r="7" fill="var(--sc-ph-2)"/>
+                    <path d="M41 49h6l2 12h-10z" fill="var(--sc-ph-2)"/>
+                    <text x="88" y="38" class="sc-jwt"><tspan class="j1">eyJhbGciOiJIUzI1NiJ9</tspan></text>
+                    <text x="88" y="54" class="sc-jwt"><tspan class="j0">.</tspan><tspan class="j2">eyJzdWIiOiJrZW5pYSJ9</tspan></text>
+                    <text x="88" y="70" class="sc-jwt"><tspan class="j0">.</tspan><tspan class="j3">SflKxwRJSMeKKF2QT4</tspan></text>
+                    <text x="88" y="92" class="sc-jwt sc-jwt-label">header · payload · signature</text>
+                  </svg>
+                  <div class="sc-info"><p class="sc-title"></p><p class="sc-desc"></p><p class="sc-tags"></p></div>
+                </div>
+
+                <canvas class="sc-static" id="sc-static" width="160" height="110" aria-hidden="true"></canvas>
+                <div class="sc-osd" aria-hidden="true"><span id="sc-osd">CH 00</span><span class="sc-rec">●</span></div>
+              </div>
+              <div class="sc-crt" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="sc-panel">
+            <span class="sc-brand">KH·06</span>
+            <div class="sc-dial-wrap">
+              <span class="sc-tick" style="--a:-60deg">0</span>
+              <span class="sc-tick" style="--a:-30deg">1</span>
+              <span class="sc-tick" style="--a:0deg">2</span>
+              <span class="sc-tick" style="--a:30deg">3</span>
+              <span class="sc-tick" style="--a:60deg">4</span>
+              <button class="sc-dial" id="sc-dial" type="button" data-cursor="turn" aria-label="Cambiar canal"><span class="sc-notch"></span></button>
+            </div>
+            <div class="sc-arrows">
+              <button type="button" id="sc-prev" data-cursor="prev" aria-label="Canal anterior">‹</button>
+              <button type="button" id="sc-next" data-cursor="next" aria-label="Canal siguiente">›</button>
+            </div>
+            <span class="sc-grille" aria-hidden="true"></span>
+            <span class="sc-power" aria-hidden="true"></span>
+          </div>
+          <span class="sc-label" aria-hidden="true">KENIA HERNÁNDEZ · DEV STUDIO</span>
+        </div>
+        <div class="sc-neck" aria-hidden="true"></div>
+
+        <div class="sc-led">
+          <div class="sc-led-window" aria-live="polite"><div class="sc-led-track" id="sc-led"></div></div>
+          <span class="sc-led-keys" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <button class="sc-go" id="sc-go" type="button" data-cursor="go" aria-label="Abrir">GO<b>›</b></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- capa del frente: taza y libreta (vuelan hacia la cámara al hacer zoom) -->
+    <div class="sc-layer sc-front" aria-hidden="true">
+      <svg class="sc-mug" viewBox="0 0 120 150">
+        <g class="sc-steam" fill="none" stroke="var(--sc-steam)" stroke-width="3" stroke-linecap="round">
+          <path d="M38 40c-8-8 8-14 0-24"/><path d="M58 42c-8-9 8-15 0-27"/><path d="M78 40c-8-8 8-14 0-24"/>
+        </g>
+        <path d="M94 66h6a14 14 0 0 1 0 28h-6" fill="none" stroke="var(--sc-mug-2)" stroke-width="7"/>
+        <rect x="16" y="50" width="80" height="92" rx="12" fill="var(--sc-mug)"/>
+        <ellipse cx="56" cy="52" rx="40" ry="7" fill="var(--sc-mug-2)"/>
+        <ellipse cx="56" cy="53" rx="34" ry="5" fill="#3a2117"/>
+        <text x="56" y="106" text-anchor="middle" class="sc-mug-text">{ }</text>
+      </svg>
+      <svg class="sc-notebook" viewBox="0 0 240 170">
+        <rect x="6" y="14" width="228" height="150" rx="8" fill="var(--sc-note-cover)"/>
+        <rect x="14" y="20" width="212" height="138" rx="4" fill="var(--sc-paper)"/>
+        <g stroke="var(--sc-paper-line)" stroke-width="1"><path d="M24 52h192M24 74h192M24 96h192M24 118h192M24 140h192"/></g>
+        <g fill="var(--sc-note-cover)"><circle cx="40" cy="16" r="5"/><circle cx="70" cy="16" r="5"/><circle cx="100" cy="16" r="5"/><circle cx="130" cy="16" r="5"/><circle cx="160" cy="16" r="5"/><circle cx="190" cy="16" r="5"/></g>
+        <text x="28" y="47" class="sc-hand">while (learning) {</text>
+        <text x="46" y="69" class="sc-hand">keep_building();</text>
+        <text x="28" y="91" class="sc-hand">}</text>
+        <g transform="translate(120 132) rotate(-14)">
+          <rect x="0" y="-5" width="96" height="10" rx="2" fill="#ffd36e"/>
+          <rect x="84" y="-5" width="12" height="10" fill="#f39bc4"/>
+          <path d="M0-5l-14 5 14 5z" fill="#f2d6b3"/><path d="M-9-2l-5 2 5 2z" fill="#3b2a47"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- texto de presentación -->
+    <div class="sc-copy" id="sc-copy">
       <p class="kicker" data-i18n="hero.kicker">Hola, soy ✦</p>
-      <h1 class="name">Kenia <span class="grad">Hernández</span></h1>
-      <p class="role" data-i18n="hero.role">Desarrolladora de software · desarrolladora GeneXus · programadora junior</p>
-      <p class="bio" data-i18n="hero.bio">
-          Me gusta descubrir cómo funcionan las cosas y encontrar la manera de hacerlas mejor. 
-          Disfruto trabajar con datos, crear soluciones y darle estructura a las ideas hasta convertirlas en 
-          algo que realmente funcione. Estoy construyendo mi camino en el desarrollo de software, aprendiendo 
-          constantemente y buscando que cada proyecto me enseñe algo nuevo.
-      </p>
+      <h1 class="name sc-name">Kenia<br><span class="grad">Hernández</span></h1>
+      <p class="role sc-role" data-i18n="hero.role">Desarrolladora de software · desarrolladora GeneXus · programadora junior</p>
       <div class="hero-actions">
         <a class="btn btn-grad" href="#proyectos" data-i18n="hero.cta1">Ver mis proyectos →</a>
         <a class="btn" href="mailto:keniayhdiaz@gmail.com" data-i18n="hero.cta2">Contáctame</a>
       </div>
-      <div class="socials">
+      <div class="socials sc-socials">
         <a class="icon-btn" href="https://github.com/Keniayh" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18A10.9 10.9 0 0 1 12 6.18c.97 0 1.94.13 2.85.38 2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18A10.9 10.9 0 0 1 12 6.18c.97 0 1.94.13 2.85.38 2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
         </a>
         <a class="icon-btn" href="https://www.linkedin.com/in/keniayh" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.32 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.54 9h3.56v11.45H3.54V9z"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.32 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.54 9h3.56v11.45H3.54V9z"/></svg>
         </a>
         <a class="icon-btn" href="mailto:keniayhdiaz@gmail.com" aria-label="Gmail">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="#EA4335" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>
-            <path fill="white" d="M4 7.5 12 13l8-5.5V18H4V7.5zm0-1.5v1.2L12 12.7 20 7.2V6H4z"/>
-          </svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#EA4335" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><path fill="white" d="M4 7.5 12 13l8-5.5V18H4V7.5zm0-1.5v1.2L12 12.7 20 7.2V6H4z"/></svg>
         </a>
       </div>
     </div>
-    <div class="hero-code">
-      <div class="hero-code-bar"><span></span><span></span><span></span></div>
-      <pre><span class="tk-key">const</span> <span class="tk-var">kenia</span> = {
-      <span class="tk-key">stack</span>: [<span class="tk-str">'GeneXus'</span>, <span class="tk-str">'SQL'</span>, <span class="tk-str">'React'</span>, <span class="tk-str">'Node.js'</span>, <span class="tk-str">'JavaScript'</span>],
-      <span class="tk-key">enfoque</span>: <span class="tk-str">'desarrollo de software'</span>,
-      <span class="tk-key">aprendiendo</span>: [<span class="tk-str">'MongoDB'</span>, <span class="tk-str">'Supabase'</span>],
-      <span class="tk-key">ubicacion</span>: <span class="tk-str">'CO'</span>,}; 
-      <span class="tk-muted">// while (learning) { keep_building(); }</span></pre>
+
+    <div class="sc-hint" id="sc-hint" aria-hidden="true"><span class="sc-mouse"></span><span id="sc-hint-text">Desliza para entrar</span></div>
+
+    <!-- terminal: aparece cuando la cámara entra a la pantalla -->
+    <div class="sc-term" id="sc-term">
+      <div class="sc-term-inner">
+        <p class="sc-term-line"><span class="sc-prompt">kenia@portafolio:~$</span> <span id="sc-term-cmd"></span><span class="sc-caret" id="sc-caret"></span></p>
+        <p class="sc-term-out" data-i18n="hero.bio">Me gusta descubrir cómo funcionan las cosas y encontrar la manera de hacerlas mejor. Disfruto trabajar con datos, crear soluciones y darle estructura a las ideas hasta convertirlas en algo que realmente funcione. Estoy construyendo mi camino en el desarrollo de software, aprendiendo constantemente y buscando que cada proyecto me enseñe algo nuevo.</p>
+        <p class="sc-term-line sc-term-next"><span class="sc-prompt">kenia@portafolio:~$</span> <span id="sc-term-next">cd ./sobre-mi</span> <span class="sc-arrow">↓</span></p>
+      </div>
+      <div class="sc-crt" aria-hidden="true"></div>
     </div>
+
+    <div class="sc-dim" aria-hidden="true"></div>
   </div>
-</div>
+</section>
+<!-- ============ FIN INICIO ============ -->
 
 <section id="sobre-mi" class="band">
   <div class="wrap reveal">
@@ -380,6 +563,7 @@
 <footer><span data-i18n="footer.text">© 2026 Kenia Hernández · Bucaramanga, Colombia</span></footer>
 
 <script src="js/script.js"></script>
+<script src="js/hero.js"></script>
 
 </body>
 </html>
