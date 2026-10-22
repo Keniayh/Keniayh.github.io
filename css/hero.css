@@ -67,10 +67,11 @@
 }
 
 .sc-sticky {
+    /* se pega justo debajo del menú, así nada queda tapado */
     position: sticky;
-    top: 0;
-    height: 100vh;
-    height: 100svh;
+    top: var(--nav-h, 76px);
+    height: calc(100vh - var(--nav-h, 76px));
+    height: calc(100svh - var(--nav-h, 76px));
     overflow: hidden;
     isolation: isolate;
 }
@@ -699,7 +700,7 @@
 .sc-copy {
     position: absolute;
     left: max(24px, 6vw);
-    top: 22%;
+    top: 15%;
     width: min(46ch, calc(var(--rig-x) - var(--u) * 22 - max(24px, 6vw) - 28px));
     z-index: 5;
 }
@@ -769,7 +770,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 90px max(24px, 7vw) 60px;
+    padding: 40px max(24px, 7vw) 50px;
     background: radial-gradient(ellipse at 50% 45%, color-mix(in srgb, var(--sc-screen-bg) 70%, #3b1d55), var(--sc-screen-bg) 75%);
     color: var(--sc-ph);
     opacity: 0;
@@ -847,15 +848,17 @@
 /* ---------- vertical / pantallas angostas ---------- */
 @media (max-aspect-ratio: 5/4) {
     .scene {
-        --u: min(2vw, 1.15vh);
-        --desk-y: 80%;
+        /* el monitor se ajusta al alto que queda libre debajo del texto */
+        --u: min(2vw, calc((100vh - var(--nav-h, 96px) - 300px) / 46));
+        --u: min(2vw, calc((100svh - var(--nav-h, 96px) - 300px) / 46));
+        --desk-y: calc(100% - var(--u) * 7 - 14px);
         --rig-x: 50%;
     }
 
     .sc-copy {
         left: 20px;
         right: 20px;
-        top: 116px;
+        top: 18px;
         width: auto;
     }
 
@@ -866,8 +869,8 @@
     .sc-socials, .sc-keyboard, .sc-neon, .sc-shelf { display: none; }
 
     .sc-plant { left: calc(var(--rig-x) + var(--u) * 20); top: calc(var(--desk-y) + var(--u) * 6); }
-    .sc-mug { width: calc(var(--u) * 11); left: 2%; }
-    .sc-notebook { width: calc(var(--u) * 22); right: -4%; }
+    .sc-mug { width: calc(var(--u) * 10); left: -1%; }
+    .sc-notebook { width: calc(var(--u) * 17); right: -9%; bottom: calc(var(--u) * -5); }
     .sc-hint { display: none; }
 }
 
