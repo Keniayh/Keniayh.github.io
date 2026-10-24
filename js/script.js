@@ -173,6 +173,16 @@ const i18n = {
       "Abierta a nuevas oportunidades, colaboraciones o simplemente a charlar sobre tecnología.",
     "contact.cta": "Enviarme un mensaje",
     "footer.text": "© 2026 Kenia Hernández · Bucaramanga, Colombia",
+    "nav.menu": "Menú",
+    "projects.viewapp": "Ver la app ↗",
+    "projects.monu.alt": "Pantallas de inicio y estadísticas de Monü",
+    "projects.monu.desc":
+      "App gratis de finanzas personales hecha en Colombia. Anotas un gasto escribiéndolo, por ejemplo «almuerzo 18000», y siempre sabes cuánto te queda del mes. Lleva movimientos, préstamos, pagos pendientes, metas de ahorro y estadísticas.",
+    "projects.monu.how":
+      "Nació de un Excel de control financiero que diseñé y lo convertí en una app con React Native y Expo. Funciona sin conexión: los datos se guardan en el teléfono con SQLite y Supabase se usa solo para el inicio de sesión y las copias de respaldo. La versión web está publicada en Netlify.",
+    "projects.tag.db": "Base de datos",
+    "projects.prest.alt1": "Pantalla de inicio de sesión de PrestService",
+    "projects.prest.alt2": "Menú del administrador de PrestService",
   },
   en: {
     "nav.about": "About",
@@ -284,6 +294,16 @@ const i18n = {
       "Open to new opportunities, collaborations, or just chatting about tech.",
     "contact.cta": "Send me a message",
     "footer.text": "© 2026 Kenia Hernández · Bucaramanga, Colombia",
+    "nav.menu": "Menu",
+    "projects.viewapp": "Open the app ↗",
+    "projects.monu.alt": "Monü home and statistics screens",
+    "projects.monu.desc":
+      "A free personal finance app made in Colombia. You log an expense just by typing it, like “lunch 18000”, and always know how much you have left for the month. It tracks transactions, loans, pending payments, savings goals and statistics.",
+    "projects.monu.how":
+      "It started as a personal finance spreadsheet I designed, which I turned into an app with React Native and Expo. It works offline: data is stored on the phone with SQLite, and Supabase is used only for sign-in and backups. The web version is published on Netlify.",
+    "projects.tag.db": "Database",
+    "projects.prest.alt1": "PrestService sign-in screen",
+    "projects.prest.alt2": "PrestService admin menu",
   },
 };
 
@@ -295,6 +315,10 @@ function applyLang(lang) {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
+  });
+  document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-alt");
+    if (i18n[lang][key] !== undefined) el.alt = i18n[lang][key];
   });
   langBtn.textContent = lang === "es" ? "EN" : "ES";
   localStorage.setItem("lang", lang);

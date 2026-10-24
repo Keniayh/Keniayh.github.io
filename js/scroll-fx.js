@@ -134,7 +134,7 @@
     const thumb = p.querySelector(".project-thumb");
     const ch = name && artFor[name.getAttribute("data-i18n")];
     const art = ch && document.querySelector(`.sc-ch[data-ch="${ch}"] .sc-art`);
-    if (!thumb || !art) return;
+    if (!thumb || !art || thumb.querySelector("img")) return;
     thumb.classList.add("fx-art");
     thumb.appendChild(art.cloneNode(true));
   });
@@ -249,4 +249,100 @@
 
   layoutTimelines();
   update();
+
+  // ---------- menú en pantallas pequeñas ----------
+  const menuBtn = document.getElementById("menu-toggle");
+  const menu = document.getElementById("nav-links");
+  if (menuBtn && menu) {
+    const setOpen = (open) => {
+      menu.classList.toggle("is-open", open);
+      menuBtn.setAttribute("aria-expanded", String(open));
+    };
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setOpen(!menu.classList.contains("is-open"));
+    });
+    menu.addEventListener("click", (e) => {
+      if (e.target.closest("a")) setOpen(false);
+    });
+    document.addEventListener("click", (e) => {
+      if (!menu.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && menu.classList.contains("is-open")) {
+        setOpen(false);
+        menuBtn.focus();
+      }
+    });
+  }
+
+  // ---------- luz rosada que sigue al mouse por las secciones ----------
+  if (finePointer.matches && !reduce.matches) {
+    const glow = document.createElement("div");
+    glow.className = "fx-light";
+    glow.setAttribute("aria-hidden", "true");
+    document.body.appendChild(glow);
+    const scene = document.getElementById("inicio");
+    let gx = innerWidth / 2, gy = innerHeight / 2, tx = gx, ty = gy, moving = false;
+    const step = () => {
+      gx += (tx - gx) * 0.12;
+      gy += (ty - gy) * 0.12;
+      glow.style.transform = `translate3d(${gx}px, ${gy}px, 0)`;
+      moving = Math.abs(tx - gx) + Math.abs(ty - gy) > 0.5;
+      if (moving) requestAnimationFrame(step);
+    };
+    window.addEventListener("mousemove", (e) => {
+      tx = e.clientX;
+      ty = e.clientY;
+      const overScene = scene && scene.getBoundingClientRect().bottom > e.clientY;
+      root.classList.toggle("fx-light-on", !overScene);
+      if (!moving) { moving = true; requestAnimationFrame(step); }
+    }, { passive: true });
+    document.addEventListener("mouseleave", () => root.classList.remove("fx-light-on"));
+  }
+
+  const strongMotion = !reduce.matches;
+
+  // ---------- tu foto: inclinación 3D con brillo ----------
+  const photoFrame = document.querySelector(".fx-photo");
+  if (photoFrame) {
+    const sheen = document.createElement("span");
+    sheen.className = "fx-sheen";
+    sheen.setAttribute("aria-hidden", "true");
+    photoFrame.appendChild(sheen);
+    if (finePointer.matches && strongMotion) {
+      photoFrame.addEventListener("pointermove", (e) => {
+        const r = photoFrame.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+        photoFrame.classList.add("is-tilting");
+        photoFrame.style.setProperty("--prx", `${(0.5 - y) * 14}deg`);
+        photoFrame.style.setProperty("--pry", `${(x - 0.5) * 16}deg`);
+        photoFrame.style.setProperty("--sx", `${120 - x * 140}%`);
+      });
+      photoFrame.addEventListener("pointerleave", () => {
+        photoFrame.classList.remove("is-tilting");
+        photoFrame.style.setProperty("--prx", "0deg");
+        photoFrame.style.setProperty("--pry", "0deg");
+      });
+    }
+  }
+
+  // ---------- botones magnéticos ----------
+  if (finePointer.matches && strongMotion) {
+    document.querySelectorAll(".btn-grad, .hero-actions .btn, .contact-row .btn, .icon-btn").forEach((btn) => {
+      btn.classList.add("fx-magnet");
+      btn.addEventListener("pointermove", (e) => {
+        const r = btn.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        btn.classList.add("is-pulled");
+        btn.style.translate = `${dx * 0.25}px ${dy * 0.35}px`;
+      });
+      btn.addEventListener("pointerleave", () => {
+        btn.classList.remove("is-pulled");
+        btn.style.translate = "0 0";
+      });
+    });
+  }
 })();
