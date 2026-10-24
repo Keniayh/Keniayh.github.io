@@ -30,7 +30,8 @@
 <nav>
   <div class="logo"><span class="logo-badge">KD</span> Kenia Hernández</div>
   <div class="nav-right">
-    <div class="nav-links">
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" data-i18n="nav.menu">Menú</button>
+    <div class="nav-links" id="nav-links">
       <a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a>
       <a href="#perfil" data-i18n="nav.profile">Perfil</a>
       <a href="#stack" data-i18n="nav.stack">Tecnologías</a>
@@ -42,7 +43,7 @@
     </div>
     <button id="theme-toggle" aria-label="Cambiar tema">◐</button>
     <button id="lang-toggle" aria-label="Cambiar idioma">EN</button>
-    <a class="btn btn-small" href="assets/images/cv.pdf" download data-i18n="nav.cv">CV ↓</a>
+    <a class="btn btn-small" href="assets/cv/cv.pdf" download data-i18n="nav.cv">CV ↓</a>
   </div>
 </nav>
 
@@ -341,6 +342,7 @@
       <div class="tool"><div class="tool-icon"><img src="https://cdn.simpleicons.org/laravel/FF2D20" alt=""></div><span class="tool-label">Laravel</span></div>
       <div class="tool"><div class="tool-icon"><img src="https://cdn.simpleicons.org/spring/6DB33F" alt=""></div><span class="tool-label">Spring Boot</span></div>
       <div class="tool"><div class="tool-icon"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt=""></div><span class="tool-label">MySQL</span></div>
+      <div class="tool"><div class="tool-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt=""></div><span class="tool-label">SQL Server</span></div>
       <div class="tool"><div class="tool-icon"><img src="https://www.genexus.com/media/images/favicon-genexus.png?timestamp=20260113184958" alt=""></div><span class="tool-label">GeneXus</span></div>
       <div class="tool"><div class="tool-icon"><img src="https://cdn.simpleicons.org/git/F05032" alt=""></div><span class="tool-label">Git</span></div>
       <div class="tool"><div class="tool-icon"><img src="https://cdn.simpleicons.org/github/181717" alt=""></div><span class="tool-label">GitHub</span></div>
@@ -481,6 +483,18 @@
     <div class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="projects.eyebrow">Proyectos</span></div>
     <h2 data-i18n="projects.title">Algunos proyectos</h2>
     <div class="project-grid">
+      <div class="project project--featured">
+        <div class="project-thumb project-thumb--app">
+          <img src="assets/images/monu-app.jpg" width="573" height="700" loading="lazy" data-i18n-alt="projects.monu.alt" alt="Pantallas de inicio y estadísticas de Monü">
+        </div>
+        <div class="project-body">
+          <p class="project-name">Monü</p>
+          <p class="project-desc" data-i18n="projects.monu.desc">App gratis de finanzas personales hecha en Colombia. Anotas un gasto escribiéndolo, por ejemplo «almuerzo 18000», y siempre sabes cuánto te queda del mes. Lleva movimientos, préstamos, pagos pendientes, metas de ahorro y estadísticas.</p>
+          <p class="project-desc" data-i18n="projects.monu.how">Nació de un Excel de control financiero que diseñé y lo convertí en una app con React Native y Expo. Funciona sin conexión: los datos se guardan en el teléfono con SQLite y Supabase se usa solo para el inicio de sesión y las copias de respaldo. La versión web está publicada en Netlify.</p>
+          <div class="project-tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">SQLite</span><span class="tag">Supabase</span><span class="tag">Netlify</span></div>
+          <a href="https://monuky.netlify.app/" target="_blank" rel="noopener" data-i18n="projects.viewapp">Ver la app ↗</a>
+        </div>
+      </div>
       <div class="project">
         <div class="project-thumb"></div>
         <div class="project-body">
@@ -504,12 +518,15 @@
         <div class="project-body">
           <p class="project-name" data-i18n="projects.environment.name">Min Ambiente BD</p>
           <p class="project-desc" data-i18n="projects.environment.desc">Diseño y desarrollo de una base de datos para gestionar información relacionada con parques naturales administrados por cada departamento.</p>
-          <div class="project-tags"><span class="tag">Base de datos</span></div>
+          <div class="project-tags"><span class="tag" data-i18n="projects.tag.db">Base de datos</span></div>
           <a href="https://github.com/Keniayh/Proyecto_BBDD_HernandezKenia-CeballosKenneth" target="_blank" rel="noopener" data-i18n="projects.view">Ver repositorio ↗</a>
         </div>
       </div>
       <div class="project">
-        <div class="project-thumb"></div>
+        <div class="project-thumb project-thumb--shot">
+          <img src="assets/images/prest-login.jpg" width="1440" height="900" loading="lazy" data-i18n-alt="projects.prest.alt1" alt="Pantalla de inicio de sesión de PrestService">
+          <img class="project-thumb-inset" src="assets/images/prest-admin.jpg" width="1440" height="900" loading="lazy" data-i18n-alt="projects.prest.alt2" alt="Menú del administrador de PrestService">
+        </div>
         <div class="project-body">
           <p class="project-name" data-i18n="projects.prestservice.name">PrestService</p>
           <p class="project-desc" data-i18n="projects.prestservice.desc">Proyecto en Java con Spring Boot y Spring Security, incluyendo JWT para gestionar los servicios ofrecidos por la empresa y la seguridad de los usuarios.</p>
