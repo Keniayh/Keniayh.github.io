@@ -737,3 +737,10 @@ html.fx-light-on .fx-light { opacity: 1; }
     .project-thumb.project-thumb--app { min-height: 0; }
     .project-thumb--app img { max-height: 340px; }
 }
+
+/* dos enlaces en la misma tarjeta (página + repositorio) */
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+}
