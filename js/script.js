@@ -175,6 +175,17 @@ const i18n = {
     "footer.text": "© 2026 Kenia Hernández · Bucaramanga, Colombia",
     "nav.menu": "Menú",
     "projects.viewapp": "Ver la app ↗",
+    "projects.viewsite": "Ver la página ↗",
+    "projects.yuito.alt": "Inicio de la tienda web de Yüito con su logo",
+    "projects.yuito.desc":
+      "Tienda web de YÜITO, mi marca de tejidos a crochet. Muestra el catálogo con filtros por categoría y arma el pedido para enviarlo por WhatsApp.",
+    "projects.yuito.how":
+      "Sitio estático en HTML, CSS y JavaScript, publicado en GitHub Pages. El catálogo se lee de Supabase y se administra desde un panel privado con seguridad por filas (RLS); si Supabase no responde, la tienda muestra un catálogo de respaldo incluido en el sitio.",
+    "projects.mayordiz.alt": "Inicio del sitio web de Confecciones Mayordiz",
+    "projects.mayordiz.desc":
+      "Sitio web de Confecciones Mayordiz, marca de pijamas y moda infantil de Girón. Muestra el catálogo con tallas y precios, una sección para pedidos de negocios, y cada pedido se hace por WhatsApp.",
+    "projects.mayordiz.how":
+      "Sitio estático en HTML, CSS y JavaScript publicado en Netlify, con un panel en Supabase para que la marca administre su catálogo.",
     "projects.monu.alt": "Pantallas de inicio y estadísticas de Monü",
     "projects.monu.desc":
       "App gratis de finanzas personales hecha en Colombia. Anotas un gasto escribiéndolo, por ejemplo «almuerzo 18000», y siempre sabes cuánto te queda del mes. Lleva movimientos, préstamos, pagos pendientes, metas de ahorro y estadísticas.",
@@ -296,6 +307,17 @@ const i18n = {
     "footer.text": "© 2026 Kenia Hernández · Bucaramanga, Colombia",
     "nav.menu": "Menu",
     "projects.viewapp": "Open the app ↗",
+    "projects.viewsite": "Visit the site ↗",
+    "projects.yuito.alt": "Yüito online store home page with its logo",
+    "projects.yuito.desc":
+      "Online store for YÜITO, my handmade crochet brand. It shows the catalog with category filters and builds the order to send through WhatsApp.",
+    "projects.yuito.how":
+      "A static site in HTML, CSS and JavaScript, published on GitHub Pages. The catalog is read from Supabase and managed from a private admin panel with row-level security (RLS); if Supabase doesn't respond, the store shows a backup catalog included in the site.",
+    "projects.mayordiz.alt": "Confecciones Mayordiz website home page",
+    "projects.mayordiz.desc":
+      "Website for Confecciones Mayordiz, a pajama and children's clothing brand from Girón. It shows the catalog with sizes and prices, a section for business orders, and every order is placed through WhatsApp.",
+    "projects.mayordiz.how":
+      "A static site in HTML, CSS and JavaScript published on Netlify, with a Supabase panel so the brand can manage its catalog.",
     "projects.monu.alt": "Monü home and statistics screens",
     "projects.monu.desc":
       "A free personal finance app made in Colombia. You log an expense just by typing it, like “lunch 18000”, and always know how much you have left for the month. It tracks transactions, loans, pending payments, savings goals and statistics.",
